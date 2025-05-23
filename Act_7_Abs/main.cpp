@@ -1,17 +1,51 @@
 #include <iostream>
+using namespace std;
 
-#include "sum.h"
-#include "sub.h"
-#include "div.h"
-#include "multiply.h"
+class Operacion {
+private:
+    // Detalles internos ocultos
+    void mostrarDetallesInternos() {
+        cout << "Método interno: validaciones matemáticas\n";
+    }
 
-using std::cout;
+protected:
+    int x, y;
+
+public:
+    void setValores(int a, int b) {
+        x = a;
+        y = b;
+        mostrarDetallesInternos(); // llamado interno, pero no accesible desde main
+    }
+
+    void descripcion() {
+        cout << "Esta clase representa una operación matemática básica.\n";
+    }
+
+    void tipo() {
+        cout << "Tipo: Aritmética\n";
+    }
+
+    void mostrarOperandos() {
+        cout << "Operandos: x = " << x << ", y = " << y << endl;
+    }
+
+    void sistema() {
+        cout << "Sistema operativo: C++ Math System\n";
+    }
+};
+
 
 int main() {
+    Operacion op;
+    op.setValores(10, 5);
+    op.descripcion();
+    op.tipo();
+    op.mostrarOperandos();
+    op.sistema();
 
-    std::cout << "sum(1, 5) = " << sum(1, 5) << '\n';
-    std::cout << "sub(5, 1) = " << sub(5, 1) << '\n';
-    std::cout << "div(9, 3) = " << divide(9, 3) << '\n';
-    std::cout << "mul(2,2) = " << multiply(2,2) << '\n';
+    // No se puede acceder a:
+    // op.mostrarDetallesInternos();  // ❌ Error: es privado
+
     return 0;
 }
